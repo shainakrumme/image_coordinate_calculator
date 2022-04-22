@@ -1,0 +1,122 @@
+<!--
+Author: Shaina Krumme
+Description: Index
+-->
+
+{% extends 'base.html' %}
+
+{% block title %}
+    Input
+{% endblock %}
+
+{% block content %}
+
+
+    <br><br>
+    <!-- Form -->
+    <form name="form", method="POST", class="text-center", action={{ url_for('index') }}>
+        <h1>Image Dimensions</h1>
+        <br>  
+              
+            <table class="container d-flex align-items-center justify-content-center">
+                <tr>
+                    <td>
+                        (<input type="number" name="im_dim_x", min="2", placeholder="width" required/>
+        
+                        , <input type="number" name="im_dim_y", min="2", placeholder="height" required/>)
+                    </td>
+                </tr>
+            </table>
+            
+            
+        <br><br>
+        <h1>Corner Points</h1>
+            <text>Corner points may be provided in any order.</text>
+            
+            
+            <br><br>
+            <table class="container d-flex align-items-center justify-content-center">
+                <tr>
+                    <td>
+                        (<input type="number" step="any" name="x1", min="0", placeholder="x1" required/>
+                    </td>
+                    <td>
+                        , <input type="number" step="any" name="y1", min="0", placeholder="y1" required/>)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        (<input type="number" step="any" name="x2", min="0", placeholder="x2" required/>
+                    </td>
+                    <td>
+                        , <input type="number" step="any"  name="y2", min="0", placeholder="y2" required/>)
+                    </td>
+                </tr>
+                <tr> 
+                    <td>
+                        (<input type="number" step="any" name="x3", min="0", placeholder="x3" required/>
+                    </td> 
+                    <td>
+                        , <input type="number" step="any" name="y3", min="0", placeholder="y3" required/>)
+                    </td> 
+                </tr>
+                <tr>
+                    <td>
+                        (<input type="number" step="any" name="x4", min="0", placeholder="x4" required/>
+                    </td>
+                    <td> 
+                        , <input type="number" step="any" name="y4", min="0", placeholder="y4" required/>)
+                    </td>
+                </tr>
+            </table>
+        
+        
+        <br><br>
+        <button class="btn btn-outline-success my-2 my-sm-0" name="submit" value="Submit">Submit</button>
+        
+        
+        <br><br>
+    </form>
+
+
+    <!-- Scrollable Modal -->
+    <div class="modal fade" id="resultsModal" tabindex="-1">
+      <div class="modal-dialog modal-dialog-scrollable modal-lg">
+        <div class="modal-content">
+          
+          <div class="modal-header">
+            <h5 class="modal-title" id="resultsModalTitle">Results</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          
+          <div class="modal-body text-center">
+              <div class="array">
+                  <h6>Array</h6>
+                      <p>[</p>
+                      {% for column in out %}
+                          <p>{{ column }}</p>
+                      {% endfor %}
+                      <p>]</p>
+              </div>
+              
+              <div class="plot">
+                  <h6>Plot</h6>
+                  <img src="{{ url }}" class="img-fluid" alt="plot">
+              </div>
+          </div>
+          
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    {% if form_submitted %}
+        <script>
+            var resultsModalVar = new bootstrap.Modal(document.getElementById('resultsModal'), {keyboard: false});
+            resultsModalVar.show();
+        </script>
+    {% endif %}
+    
+{% endblock %}

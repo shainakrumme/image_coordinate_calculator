@@ -1,0 +1,143 @@
+<!--
+Author: Shaina Krumme
+Description: Instructions
+-->
+
+{% extends 'base.html' %}
+
+{% block title %}
+    Instructions
+{% endblock %}
+
+{% block content %}
+    
+    
+    <br><br>
+    <h1>Instructions</h1>
+        <p>The Image Coordinate Calculator will calculate evenly spaced 
+            (x, y) coordinate pairs given the dimensions and corner points 
+            of an image.</p>
+
+
+    <br><br>
+    <h3>Input</h3> 
+
+        <br>
+        <h5>Image Dimensions</h5>
+        <ul>
+            <li>The image dimensions are a tuple defined as (width, height).</li>
+            <li>The width and height values are positive integers and represent pixel measurements.</li>
+            <li>The width and height can also be thought of as the number of columns and the number of rows, respectively.</li>
+        </ul>
+
+        <br>
+        <h5>Corner Points</h5>
+        <ul>
+            <li>The corner points may be provided in any order.</li>
+            <li>The corner points are a list of four tuples or (x, y) coordinate pairs.</li> 
+            <li>The x and y values are positive numbers (either integers or decimals).</li> 
+            <li>Each tuple represents the location of a pixel in the image.</li>
+        </ul>  
+
+
+    <br><br>           
+    <h3>Output</h3>
+        <ul>
+            <li>The results are rounded to two decimal places.</li>
+            <li>The results are given as both an array and a plot.</li>
+        </ul>
+    
+    
+    <br><br>           
+    <h3>Examples</h3>
+    
+        <br>
+        <h5>Example 1</h5>
+        <ul>
+            <li>Input</li>
+            <ul>
+                <li>Image Dimensions = (5, 5)</li>
+                <li>Corner Points = [(0, 0), (0, 5), (5, 0), (5, 5)]</li>
+            </ul>
+            <li>Output</li>
+            <ul>    
+                <li>Array<br>
+                    [
+    
+                    [[0. 5. ] [1.25 5. ] [2.5 5. ] [3.75 5. ] [5. 5. ]]
+                    
+                    [[0. 3.75] [1.25 3.75] [2.5 3.75] [3.75 3.75] [5. 3.75]]
+                    
+                    [[0. 2.5 ] [1.25 2.5 ] [2.5 2.5 ] [3.75 2.5 ] [5. 2.5 ]]
+                    
+                    [[0. 1.25] [1.25 1.25] [2.5 1.25] [3.75 1.25] [5. 1.25]]
+                    
+                    [[0. 0. ] [1.25 0. ] [2.5 0. ] [3.75 0. ] [5. 0. ]]
+                    
+                    ]</li>
+                <li>Plot<br><img src="/static/example-1.png" class="img-fluid" alt="example-1"></li>
+            </ul>
+        </ul>
+        
+        <br>
+        <h5>Example 2</h5>
+        <ul>
+            <li>Input</li>
+            <ul>
+                <li>Image Dimensions = (7, 10)</li>
+                <li>Corner Points = [(0, 5), (0, 0), (5, 0), (5, 5)]</li>
+            </ul>
+            <li>Output</li>
+            <ul>
+                <li>Array<br>
+                    [
+
+                    [[0. 5. ] [0.83 5. ] [1.67 5. ] [2.5 5. ] [3.33 5. ] [4.17 5. ] [5. 5. ]]
+                    
+                    [[0. 4.44] [0.83 4.44] [1.67 4.44] [2.5 4.44] [3.33 4.44] [4.17 4.44] [5. 4.44]]
+                    
+                    [[0. 3.89] [0.83 3.89] [1.67 3.89] [2.5 3.89] [3.33 3.89] [4.17 3.89] [5. 3.89]]
+                    
+                    [[0. 3.33] [0.83 3.33] [1.67 3.33] [2.5 3.33] [3.33 3.33] [4.17 3.33] [5. 3.33]]
+                    
+                    [[0. 2.78] [0.83 2.78] [1.67 2.78] [2.5 2.78] [3.33 2.78] [4.17 2.78] [5. 2.78]]
+                    
+                    [[0. 2.22] [0.83 2.22] [1.67 2.22] [2.5 2.22] [3.33 2.22] [4.17 2.22] [5. 2.22]]
+                    
+                    [[0. 1.67] [0.83 1.67] [1.67 1.67] [2.5 1.67] [3.33 1.67] [4.17 1.67] [5. 1.67]]
+                    
+                    [[0. 1.11] [0.83 1.11] [1.67 1.11] [2.5 1.11] [3.33 1.11] [4.17 1.11] [5. 1.11]]
+                    
+                    [[0. 0.56] [0.83 0.56] [1.67 0.56] [2.5 0.56] [3.33 0.56] [4.17 0.56] [5. 0.56]]
+                    
+                    [[0. 0. ] [0.83 0. ] [1.67 0. ] [2.5 0. ] [3.33 0. ] [4.17 0. ] [5. 0. ]]
+
+                    ]</li>                
+                <li>Plot<br><img src="/static/example-2.png" class="img-fluid" alt="example-2"></li>
+            </ul>              
+        </ul>
+        
+        <br>
+        <h5>Example 3</h5>
+        <ul>
+            <li>Input</li>
+            <ul>        
+                <li>Image Dimensions = (2, 2)</li>
+                <li>Corner Points = [(1, 1), (1, 5), (5, 1), (5, 5)]</li>
+            </ul>
+            <li>Output</li>
+            <ul>    
+                <li>Array<br>
+                    [
+
+                    [[1. 5.] [5. 5.]]
+                    
+                    [[1. 1.] [5. 1.]]
+                    
+                    ]</li>
+                <li>Plot<br><img src="/static/example-3.png" class="img-fluid" alt="example-3"></li>
+            </ul>              
+        </ul>        
+        
+    <br><br>
+{% endblock %}
